@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Shoe Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <a href="#" class="logo">Modern<span>Shoe.</span></a>
+        <nav>
+            <ul class='nav-links'>
+                <li><a href="#">Home</a></li>
+                <li><a href="#feature">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#footer">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="items">
+            <a href="#about"><button>Shop Now</button></a>
+            <div>
+                <a href="#">👤</a>
+                <a href="#">🛒</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="paint-splash"></div>
+        <div class="hero-text">
+            <span>Sale Products</span>
+            <h1>Nike Ari Max 2026</h1>
+            <p>Your one-stop shop for the latest in footwear fashion.</p>
+            <div class="socials">
+                <a href="#">f</a>
+                <a href="#">𝕏</a>
+                <a href="#">📷</a>
+                <a href="#">in</a>
+                <a href="#">📌</a>
+            </div>
+            <a href="#products"><button>Make Your Big Purchase!</button></a>
+        </div>
+        <div class="hero-image">
+            <img src="src/images/hero.png" alt='Hero-image' />
+        </div>
+    </div>
+
+    <div class="about" id='about'>
+        <h1>
+            70% off <span>on all shoes</span>
+        </h1>
+        <a href="#products"><button>shop now →</button></a>
+    </div>
+
+    <div class="product-tab" id='products'>
+        <div class="product-title">
+            <h2>New Arrival</h2>
+            <button>→</button>
+        </div>
+
+        <div class="product-list">
+            <div class='product-item'>
+                <img src="src/images/product-1.png" alt="CloudMotion" />
+                <div>
+                    <h3>CloudMotion</h3>
+                    <p>$29.99</p>
+                    <button>🛒 Add to cart</button>
+                </div>
+            </div>
+
+            <div class='product-item'>
+                <img src="src/images/product-2.png" alt="Nebula flex" />
+                <div>
+                    <h3>Nebula flex</h3>
+                    <p>$39.99</p>
+                    <button>🛒 Add to cart</button>
+                </div>
+            </div>
+
+            <div class='product-item'>
+                <img src="src/images/product-3.png" alt="Aether Glide" />
+                <div>
+                    <h3>Aether Glide</h3>
+                    <p>$49.99</p>
+                    <button>🛒 Add to cart</button>
+                </div>
+            </div>
+
+            <div class='product-item'>
+                <img src="src/images/product-4.png" alt="Stellar Wave" />
+                <div>
+                    <h3>Stellar Wave</h3>
+                    <p>$59.99</p>
+                    <button>🛒 Add to cart</button>
+                </div>
+            </div>
+
+            <div class='product-item'>
+                <img src="src/images/product-5.png" alt="Lunar Eclipse" />
+                <div>
+                    <h3>Lunar Eclipse</h3>
+                    <p>$69.99</p>
+                    <button>🛒 Add to cart</button>
+                </div>
+            </div>
+
+            <div class='product-item'>
+                <img src="src/images/product-6.png" alt="Solar Flare" />
+                <div>
+                    <h3>Solar Flare</h3>
+                    <p>$79.99</p>
+                    <button>🛒 Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feature" id="feature">
+        <img src="src/images/feature.png" alt="Feature" />
+        <div class="feature-text">
+            <h3>designed for people <span>who never stay still</span></h3>
+            <p>We create sneakers that keep up with your energy from courts to streets, and everything in between. Comfort, performance, and attitude in every step.</p>
+            <button>Learn More →</button>
+        </div>
+    </div>
+
+    <footer class="footer" id="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <a href="#" class="logo">Modern<span>Shoe.</span></a>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#">f</a>
+                    <a href="#">𝕏</a>
+                    <a href="#">📺</a>
+                    <a href="#">gh</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 ModernShoe. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+       
+        const menuToggle = document.getElementById('menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        let cart = [];
+
+        window.addEventListener('load', () => {
+            const savedCart = localStorage.getItem('cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartCount();
+            }
+        });
+
+        document.querySelectorAll('.product-item button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const productItem = button.closest('.product-item');
+                const productName = productItem.querySelector('h3').textContent;
+                const productPrice = productItem.querySelector('p').textContent;
+
+                const product = {
+                    id: Date.now(),
+                    name: productName,
+                    price: productPrice
+                };
+                cart.push(product);
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                showNotification(`${productName} added to cart!`);
+                updateCartCount();
+            });
+        });
+
+        function updateCartCount() {
+            console.log(`Cart items: ${cart.length}`);
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: #60D3FB;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 5px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                font-weight: 600;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        document.querySelectorAll('.items div a').forEach((link, index) => {
+            if (index === 1) { 
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showCart();
+                });
+            }
+        });
+
+        function showCart() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            let cartMessage = `Items in cart: ${cart.length}\n\n`;
+            let total = 0;
+            cart.forEach((item, index) => {
+                const price = parseFloat(item.price.replace('$', ''));
+                total += price;
+                cartMessage += `${index + 1}. ${item.name} - ${item.price}\n`;
+            });
+            cartMessage += `\nTotal: $${total.toFixed(2)}`;
+            alert(cartMessage);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
